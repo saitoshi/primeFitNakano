@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { CSSProperties } from 'react';
 import { LocationCard } from './_components/LocationCard/LocationCard';
 import { Footer } from './_components/Footer/Footer';
-import Image from 'next/image';
+
 export const metadata: Metadata = {
   metadataBase: new URL('http://localhost:3000'),
   title: 'Prime Fit Gym 中野 | トップ',
