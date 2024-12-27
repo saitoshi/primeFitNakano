@@ -51,15 +51,13 @@ export default async function Page(props: { params: tParams }) {
             <p className='subHeader'>RECOMMEND</p>
             <p className='mainHeader'>おすすめな理由</p>
           </h4>
-          {serviceInfo?.benefits.map(
-            (item: { title: string; description: string }) => {
-              return (
-                <li className='recommendList' key={item.title}>
-                  <b>{item.title}</b> <br /> {item.description}
-                </li>
-              );
-            },
-          )}
+          {serviceInfo?.benefits.map((item: IDetail) => {
+            return (
+              <li className='recommendList' key={item.title}>
+                <b>{item.title}</b> <br /> {item.description}
+              </li>
+            );
+          })}
         </div>
         <div className='flow'>
           <h4 className='recommendTitle'>
@@ -94,16 +92,14 @@ export default async function Page(props: { params: tParams }) {
           </h4>
           {serviceInfo?.campaign.length > 0 ? (
             <>
-              {serviceInfo.campaign.map(
-                (campaign: { title: string; description: string }) => {
-                  return (
-                    <div className='campaignBox' key={campaign.title}>
-                      <h4>{campaign.title}</h4>
-                      <p>{campaign.description}</p>
-                    </div>
-                  );
-                },
-              )}
+              {serviceInfo.campaign.map((campaign: IDetail) => {
+                return (
+                  <div className='campaignBox' key={campaign.title}>
+                    <h4>{campaign.title}</h4>
+                    <p>{campaign.description}</p>
+                  </div>
+                );
+              })}
             </>
           ) : (
             <></>
