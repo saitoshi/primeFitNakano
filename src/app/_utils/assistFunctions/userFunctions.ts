@@ -34,7 +34,7 @@ export function removeToken() {
  */
 export async function verifyToken() {
   const token = await getToken();
-  const verifyResponse = await fetch(`${process.env.URL}api/verify`, {
+  const verifyResponse = await fetch(`api/verify`, {
     headers: { Authorization: `Bearer: ${token}` },
     method: 'GET',
   });
