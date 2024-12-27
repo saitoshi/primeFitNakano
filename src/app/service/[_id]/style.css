@@ -1,0 +1,89 @@
+.reviewBox,
+.recommendBox {
+  border: 3px solid rgba(173, 241, 255, 1);
+  border-radius: 10px;
+  text-align: center;
+  padding: 5px 10px;
+  margin: 10px;
+}
+.campaignBox {
+  border: 3px solid rgba(173, 241, 255, 1);
+  text-align: center;
+  margin: 10px auto;
+  width: 50%;
+  border-radius: 10px;
+}
+.campaignBox h4 {
+  border-bottom: 1px solid rgba(173, 241, 255, 1);
+  background-color: rgba(173, 241, 255, 1);
+}
+.flow {
+  margin: 10px 0;
+  padding: 5px 10px;
+}
+.recommendTitle {
+  border-bottom: 3px solid rgba(173, 241, 255, 1);
+  margin-bottom: 20px;
+  text-align: center;
+}
+.recommendTitle > .mainHeader {
+  font-size: 20px;
+}
+.recommendTitle > .subHeader {
+  font-size: 14px;
+}
+.recommendList {
+  list-style: none;
+  text-align: center;
+}
+.stepListTitle b,
+.recommendList b {
+  color: #333;
+  font-weight: 600;
+  margin: 10px 0;
+}
+.priceListTable {
+  border: 2px rgba(69, 242, 255, 1) solid;
+  margin-left: auto;
+  margin-right: auto;
+}
+.priceHead {
+  text-align: center;
+  color: white;
+  background-color: rgba(69, 242, 255, 1);
+  border-bottom: 1px rgba(69, 242, 255, 1) solid;
+}
+.priceBody,
+.priceBody th {
+  border: 1px rgba(69, 242, 255, 1) solid;
+}
+.priceBody th {
+  padding: 0 10px;
+  margin: 0 10px;
+}
+.campaignBox h4,
+.reviewBox h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #333;
+}
+
+.reviewBox p {
+  font-size: 14px;
+  color: #333;
+}
+
+#reviewSection {
+  margin: 10px 0;
+}
+.imgBox {
+  width: 100%;
+  text-align: center;
+}
+
+.imgResponsive {
+  margin-right: auto;
+  margin-left: auto;
+  vertical-align: middle;
+  max-width: 80%;
+}

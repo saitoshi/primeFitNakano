@@ -18,6 +18,7 @@ export interface IDetail {
   id: number;
   title?: string;
   description?: string;
+  cost?: string;
 }
 export interface ILocation {
   name: string;
