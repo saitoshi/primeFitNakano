@@ -1,0 +1,36 @@
+#loginForm {
+  margin: 0 auto;
+  background-color: rgba(69, 242, 255, 1);
+  border-radius: 10px;
+  padding: 0 15px 10px 15px;
+}
+
+.formHeader {
+  text-align: left;
+  font-weight: 700;
+  color: #333;
+  font-size: 16px;
+}
+form,
+input,
+textarea {
+  width: 70%;
+}
+.loginSubmit {
+  text-align: center;
+  font-weight: 700;
+  color: #333;
+  background-color: rgb(130 180 254);
+  padding: 10px 15px;
+  margin: 10px 15px 10px 15px;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 700px) {
+  #loginForm {
+    margin: 0 5%;
+  }
+  .formHeader {
+    font-size: 14px;
+  }
+}
