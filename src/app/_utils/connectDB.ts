@@ -1,5 +1,8 @@
 import mongoose from 'mongoose';
-
+/**
+ * @name connectDB
+ * @desc A function to help connect the Database
+ */
 const connectDB = async () => {
   try {
     await mongoose.connect(process.env.DB_API_KEY!);
