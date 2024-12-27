@@ -1,0 +1,38 @@
+.publishedDate {
+  color: #333;
+  font-weight: 500;
+}
+#blogContent {
+  margin: 10px 0px;
+  padding: 0 10px;
+}
+.paragraph {
+  margin: 20px 0;
+}
+.sectionHead {
+  color: #333;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 10px 0;
+}
+.bodyMessage {
+  color: #333;
+  font-size: 16px;
+  text-align: left;
+}
+
+.imgComment {
+  text-align: center;
+  font-weight: 700;
+}
+.imgBox {
+  width: 80%;
+  text-align: center;
+}
+
+.imgResponsive {
+  margin-right: auto;
+  margin-left: auto;
+  vertical-align: middle;
+  max-width: 80%;
+}
