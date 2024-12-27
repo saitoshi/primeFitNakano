@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { CSSProperties } from 'react';
 import { LocationCard } from './_components/LocationCard/LocationCard';
 import { Footer } from './_components/Footer/Footer';
-
+import Image from 'next/image';
 export const metadata: Metadata = {
   metadataBase: new URL('http://localhost:3000'),
   title: 'Prime Fit Gym 中野 | トップ',
@@ -23,9 +23,6 @@ export default function Home() {
       <div id='introSection'>
         <div className='rowSplit'>
           <div className='smlRightCol'>
-            <div className='mobileIntroImgContainer'>
-              <img src='/image/landingImage.jpeg' alt='landing' />
-            </div>
             <p className='introMessage'>
               ここで<span>健康的</span>な
               <br />
@@ -68,7 +65,11 @@ export default function Home() {
             <p className='mainHeader'>代表プロフィール</p>
           </h2>
           <div className='rowSplit'>
-            <div className='halfSplit'></div>
+            <div className='halfSplit'>
+              <div className='introImgContainer' style={introImgContainer}>
+                <img src={'/image/ownerProfile.jpg'} alt='landing' />
+              </div>
+            </div>
             <div className='halfSplit'>
               <h3>渡辺 開人</h3>
               <p>

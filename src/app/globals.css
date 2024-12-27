@@ -136,9 +136,6 @@ body {
   align-items: center;
   gap: 8px;
 }
-.mobileIntroImgContainer {
-  display: none;
-}
 .introFeaturePoint {
   border-radius: 50%;
   background: rgba(69, 242, 255, 1);
@@ -156,6 +153,7 @@ body {
 
 .introImgContainer img {
   border-radius: 10px;
+  width: 95%;
 }
 .lineContact {
   padding: 10px 15px;
@@ -249,7 +247,6 @@ body {
   margin-right: auto;
   margin-left: auto;
   vertical-align: middle;
-  max-width: 80%;
 }
 
 .formArea {
@@ -347,5 +344,8 @@ textarea {
   }
   .errorMsg {
     font-size: 14px;
+  }
+  .imgResponsive {
+    width: 45%;
   }
 }
