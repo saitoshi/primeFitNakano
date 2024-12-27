@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { getBlogs } from '@/app/_utils/assistFunctions/blogFunction';
-import '../components.style.css';
+import './style.css';
 import { IBlog } from '@/app/_utils/type';
 import Link from 'next/link';
 

@@ -1,0 +1,170 @@
+.tab {
+  top: auto;
+  /**left: 15%;**/
+  min-height: 400px;
+  height: auto;
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+  overflow: visible;
+}
+
+.tabMenu {
+  padding-top: 10px;
+  display: flex;
+  width: 200px;
+  height: auto;
+  flex-direction: column;
+  white-space: nowrap;
+  color: #333;
+  overflow: auto;
+  position: fixed;
+}
+.imageHolder {
+  padding: 0;
+  text-align: center;
+}
+.dashboardThumbnail {
+  width: 100px;
+  text-align: center;
+}
+.dashboardThumbnail img {
+  width: 50%;
+  height: 70%;
+  aspect-ratio: 1/1;
+}
+.tabBody {
+  border-left: 3px solid;
+  border-color: whitesmoke;
+  margin-left: 200px;
+  min-height: 400px;
+}
+.tabContent {
+  margin: 10px;
+  padding: 5px;
+}
+.addButtons {
+  bottom: 0;
+  position: fixed;
+}
+.tabContainer {
+  padding: 0 15px;
+}
+.tabMenu h5 {
+  text-align: center;
+  font-weight: 700;
+  font-size: 20px;
+}
+.tabContainer h3 {
+  text-align: center;
+}
+.tabButton {
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: 500;
+  background-color: white;
+  border: none;
+}
+.tabButton:hover {
+  background-color: rgba(173, 241, 255, 1);
+}
+.tableThumbnail {
+  max-width: 10%;
+}
+.createBlogButton {
+  background-color: rgba(173, 241, 255, 1);
+  margin: 10px 5px;
+  padding: 10px 5px;
+  border-radius: 10px;
+}
+.addServiceButton {
+  background-color: rgb(146, 248, 255);
+  margin: 10px 5px;
+  padding: 10px 5px;
+  border-radius: 10px;
+}
+.addUserButton {
+  background-color: rgb(100, 180, 255);
+  margin: 10px 5px;
+  padding: 10px 5px;
+  border-radius: 10px;
+}
+.activeButton {
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: 500;
+  background-color: rgba(69, 242, 255, 1);
+}
+.tabContainer {
+  padding: 10px 5px 0 5px;
+}
+.tabContainer h5 {
+  text-align: center;
+  font-weight: 800;
+  font-size: 20px;
+}
+#tabTable {
+  margin: 5px 5px 15px 5px;
+  border-radius: 3px;
+}
+#tabTable td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+#tabTable th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  background-color: rgba(77, 149, 255, 1);
+  color: white;
+  text-align: center;
+  font-size: 16px;
+}
+
+.editButton {
+  background-color: greenyellow;
+  border-radius: 2px;
+  padding: 10px;
+}
+
+.listHeader {
+  padding: 10px 0;
+  text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+  #mobileTab {
+    background-color: white;
+    border-radius: 10px;
+    overflow: visible;
+  }
+  .tab {
+    position: fixed; /* or absolute */
+    top: auto;
+    left: auto;
+    height: auto;
+    width: 500px;
+  }
+  .mobileTabHeader {
+    text-align: center;
+  }
+  .mobileTabHeader button {
+    font-size: 12px;
+    margin-right: 5px;
+  }
+  .mobileTabBody {
+    border-top: 3px solid;
+    border-color: whitesmoke;
+  }
+  .tabMenu {
+    width: 100px;
+  }
+  .tabBody {
+    margin-left: 100px;
+  }
+  .tabBody {
+    font-size: 14px;
+  }
+  .tabMenu h5 {
+    font-size: 15px;
+  }
+}

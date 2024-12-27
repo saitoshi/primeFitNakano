@@ -1,0 +1,8 @@
+#dashboardContainer h2 {
+  padding: 20px 0 72px;
+  text-align: center;
+}
+
+.dashboardContainer {
+  padding: 72px 20px;
+}
