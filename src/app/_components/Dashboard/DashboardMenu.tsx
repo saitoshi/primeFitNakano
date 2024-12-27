@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { BlogTable } from '../BlogRelated/BlogTable';
+import { ServiceTable } from '../ServiceRelated/ServiceTable';
 import './style.css';
 import { useMedia } from 'react-use';
 import Link from 'next/link';
@@ -85,6 +86,15 @@ export const DashboardMenu = () => {
               }>
               <BlogTable />
             </div>
+            <div
+              className='tabContent'
+              style={
+                currentTab == 'serviceList'
+                  ? { display: 'block' }
+                  : { display: 'none' }
+              }>
+              <ServiceTable />
+            </div>
           </div>
         </div>
       ) : (
@@ -112,6 +122,15 @@ export const DashboardMenu = () => {
                 : { display: 'none' }
             }>
             <BlogTable />
+          </div>
+          <div
+            className='mobileTabBody'
+            style={
+              currentTab == 'serviceList'
+                ? { display: 'block' }
+                : { display: 'none' }
+            }>
+            <ServiceTable />
           </div>
         </div>
       )}

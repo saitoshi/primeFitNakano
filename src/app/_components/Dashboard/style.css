@@ -120,10 +120,13 @@
   font-size: 16px;
 }
 
-.editButton {
-  background-color: greenyellow;
-  border-radius: 2px;
+.edit-button {
+  background-color: rgba(77, 149, 255, 1);
+  color: white;
+  font-size: 10px;
+  border-radius: 5px;
   padding: 10px;
+  border: none;
 }
 
 .listHeader {

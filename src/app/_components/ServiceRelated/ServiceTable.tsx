@@ -1,23 +1,25 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { getBlogs } from '@/app/_utils/assistFunctions/blogFunction';
-import './style.css';
-import { IBlog } from '@/app/_utils/type';
+import { getServices } from '@/app/_utils/assistFunctions/serviceFunction';
+import { IService } from '@/app/_utils/type';
 import Link from 'next/link';
+import './style.css';
 
-export const BlogTable = () => {
+export const ServiceTable = () => {
   const [load, setLoad] = useState<boolean>(true);
-  const [blogList, setBlogList] = useState<[IBlog]>();
-  const [isError, setError] = useState<boolean>(false);
-
+  const [serviceList, setServiceList] = useState<IService[]>();
+  const [isError, setIsError] = useState<boolean>(false);
+  const errorMsg: string = 'エラーが発生いたしました。';
   useEffect(() => {
-    const fetchBlogs = async () => {
-      const blogs = await getBlogs();
-      setBlogList(blogs);
-      setLoad(false);
-      setError(false);
+    const fetchServices = async () => {
+      const services = await getServices();
+      if (services.length === 0) {
+        await setIsError(true);
+      }
+      await setServiceList(services);
+      await setLoad(false);
     };
-    fetchBlogs();
+    fetchServices();
   }, []);
 
   if (load) {
@@ -28,47 +30,49 @@ export const BlogTable = () => {
     );
   } else if (isError) {
     <div className='pageSection' id='errorMessage'>
-      <span className='errorMsg'>'エラーが発生いたしました'</span>
+      <span className='errorMsg'>{errorMsg}</span>
     </div>;
   }
   return (
     <>
-      <div id='blogList'>
+      <div id='serviceList'>
         <h2 className='listHeader'>
-          <p className='subHeader'>BLOG ARCHIVE</p>
-          <p className='mainHeader'>ブログ</p>
+          <p className='subHeader'>SERVICE ARCHIVE</p>
+          <p className='mainHeader'>サービス</p>
         </h2>
         <ul className='responsive-table'>
           <li className='tableHeader'>
-            <div className='blog col-1'>タイトル</div>
+            <div className='blog col-1'>サービス名</div>
             <div className='blog col-2'>概要</div>
             <div className='blog col-3'>サムネ画像</div>
             <div className='blog col-4'>公開・非公開</div>
             <div className='blog col-5'>編集</div>
             <div className='blog col-6'>作成日</div>
           </li>
-          {blogList?.map((blog: IBlog) => {
+          {serviceList?.map((service: IService) => {
             return (
-              <li className='tableRow' key={blog._id}>
-                <div className='blog col-1'>{blog.title}</div>
-                <div className='blog col-2'>{blog.description}</div>
+              <li className='tableRow' key={service._id}>
+                <div className='blog col-1'>{service.title}</div>
+                <div className='blog col-2'>{service.description}</div>
                 <div className='blog col-3'>
                   <div className='imgBox'>
-                    <img src={blog.thumbnail} className='imgResponsive'></img>
+                    <img
+                      src={service.thumbnail}
+                      className='imgResponsive'></img>
                   </div>
                 </div>
                 <div className='blog col-4'>
-                  {blog.status === 'draft' ? <p>非公開</p> : <p>公開</p>}
+                  {service.status === 'draft' ? <p>非公開</p> : <p>公開</p>}
                 </div>
                 <div className='blog col-5'>
                   <Link
-                    href={`/edit-blog/${blog._id}`}
+                    href={`/edit-service/${service._id}`}
                     style={{ textDecoration: 'none' }}>
                     <button className='edit-button'>&#x270E;</button>
                   </Link>
                 </div>
                 <div className='blog col-6'>
-                  {blog.publishedDate.toString().split('T')[0]}
+                  {service.publishedDate.toString().split('T')[0]}
                 </div>
               </li>
             );
