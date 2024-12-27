@@ -5,6 +5,10 @@
 main {
   margin-top: 92px;
 }
+a {
+  text-decoration: none;
+  color: white;
+}
 body {
   margin: 92px 0 0 0;
   color: #333;

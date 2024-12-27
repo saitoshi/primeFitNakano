@@ -1,0 +1,44 @@
+.footerContainer {
+  padding: 60px 30px 84px;
+  color: white;
+  font-size: 24px;
+}
+
+.footerLogo {
+  max-width: 200px;
+  width: 50%;
+  margin-right: 60px;
+}
+
+#footer {
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(
+    90deg,
+    rgba(69, 242, 255, 1) 0%,
+    rgba(77, 149, 255, 1) 53%,
+    rgba(173, 241, 255, 1) 99%
+  );
+  bottom: 0;
+  width: 100%;
+}
+
+.footerNavLinks {
+  text-decoration: none;
+  color: white;
+  list-style: none;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 700px) {
+  .footerLogo {
+    text-align: center;
+    margin: 0;
+  }
+  .footerContainer {
+    padding: 40px 30px 40px;
+    font-size: 18px;
+  }
+}

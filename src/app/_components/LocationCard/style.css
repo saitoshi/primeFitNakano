@@ -1,0 +1,50 @@
+.locationCard {
+  display: flex;
+  width: 100%;
+  font-size: 1.6rem;
+  align-items: stretch;
+  flex-wrap: wrap;
+  background-color: white;
+}
+
+.locationCard dt {
+  width: 20%;
+  color: white;
+  font-size: 1.6rem;
+  font-weight: 600;
+  padding: 8px 0;
+  display: flex;
+  text-align: center;
+  background-color: rgb(130 180 254);
+  justify-content: center;
+}
+
+.locationCard dd {
+  width: 80%;
+  padding: 8px 15px;
+  font-size: 1.5rem;
+  display: flex;
+  line-height: 1.3;
+  align-items: center;
+}
+
+@media screen and (max-width: 650px) {
+  .locationCard {
+    padding: 5vw;
+    text-align: center;
+  }
+  .locationCard dt {
+    width: 100%;
+    display: block;
+    padding: 4px 0;
+    font-size: 14px;
+    border-radius: 10px;
+  }
+  .locationCard dd {
+    width: 100%;
+    display: block;
+    padding: 4px 8px;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+}
