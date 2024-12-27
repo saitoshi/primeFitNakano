@@ -1,5 +1,5 @@
 export interface IService {
-  _id: any;
+  _id: string;
   title: string;
   description: string;
   thumbnail: string;
@@ -35,7 +35,7 @@ export interface IParagraph {
   imageDesc?: string;
 }
 export interface IBlog {
-  _id: any;
+  _id: string;
   title: string;
   description: string;
   thumbnail: string;
@@ -47,7 +47,7 @@ export interface IBlog {
 }
 
 export interface IUser {
-  _id: any;
+  _id: string;
   email: string;
   password: string;
   role: string;
