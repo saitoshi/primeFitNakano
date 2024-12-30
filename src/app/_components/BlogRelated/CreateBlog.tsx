@@ -1,7 +1,10 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { IBlog } from '@/app/_utils/type';
-import { verifyToken } from '@/app/_utils/assistFunctions/userFunctions';
+import {
+  getToken,
+  verifyToken,
+} from '@/app/_utils/assistFunctions/userFunctions';
 import { LoadingWheel } from '../ConditionalRelated/LoadingWheel';
 import { useRouter } from 'next/navigation';
 
@@ -71,7 +74,8 @@ export const CreateBlog = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const submitBlog = async (e: any) => {
     try {
-      e.preventDefault();
+      await e.preventDefault();
+      const token = await getToken();
       await setLoad(true);
       const keywordList = await keywordHolder.split(',');
       await setKeyword(keywordList);
@@ -83,6 +87,22 @@ export const CreateBlog = () => {
         content,
         status,
       );
+      const blogResponse = await fetch('/api/blog', {
+        headers: { Authorization: `Bearer: ${token}` },
+        body: JSON.stringify({
+          title,
+          description,
+          thumbnail,
+          keyword,
+          content,
+          status,
+        }),
+        method: 'POST',
+      });
+      const blogData = await blogResponse.json();
+      if (blogData['status'] !== 201) {
+        await setError(true);
+      }
       await setSuccess(true);
     } catch (error) {
       await console.log(error);
