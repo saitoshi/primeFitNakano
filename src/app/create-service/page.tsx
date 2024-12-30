@@ -4,8 +4,8 @@ export default function Page() {
     <div>
       <div className='pageContainer'>
         <h2>
-          <p className='subHeader'>CREATE BLOG</p>
-          <p className='mainHeader'>ブログ作成</p>
+          <p className='subHeader'>CREATE SERVICE</p>
+          <p className='mainHeader'>サービス作成</p>
         </h2>
         <br />
         <CreateService />

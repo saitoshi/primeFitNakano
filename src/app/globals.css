@@ -288,12 +288,6 @@ textarea {
   margin: 5px 10px;
 }
 
-.formSelection > input#status {
-  width: 30%;
-}
-.formSelection > label {
-  width: 70%;
-}
 @media screen and (max-width: 700px) {
   #serviceSectionContainer h2,
   #ownerSectionContainer h2,
