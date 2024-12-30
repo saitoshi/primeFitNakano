@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { BlogTable } from '../BlogRelated/BlogTable';
 import { ServiceTable } from '../ServiceRelated/ServiceTable';
+import { UserTable } from '../UserRelated/UserTable';
 import './style.css';
 import { useMedia } from 'react-use';
 import Link from 'next/link';
@@ -95,6 +96,15 @@ export const DashboardMenu = () => {
               }>
               <ServiceTable />
             </div>
+            <div
+              className='tabContent'
+              style={
+                currentTab == 'userList'
+                  ? { display: 'block' }
+                  : { display: 'none' }
+              }>
+              <UserTable />
+            </div>
           </div>
         </div>
       ) : (
@@ -131,6 +141,15 @@ export const DashboardMenu = () => {
                 : { display: 'none' }
             }>
             <ServiceTable />
+          </div>
+          <div
+            className='mobileTabBody'
+            style={
+              currentTab == 'userList'
+                ? { display: 'block' }
+                : { display: 'none' }
+            }>
+            <UserTable />
           </div>
         </div>
       )}

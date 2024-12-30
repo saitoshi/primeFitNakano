@@ -17,7 +17,9 @@ export const BlogTable = () => {
       setLoad(false);
       setError(false);
     };
-    fetchBlogs();
+    if (load) {
+      fetchBlogs();
+    }
   }, []);
 
   if (load) {

@@ -19,7 +19,9 @@ export const ServiceTable = () => {
       await setServiceList(services);
       await setLoad(false);
     };
-    fetchServices();
+    if (load) {
+      fetchServices();
+    }
   }, []);
 
   if (load) {
