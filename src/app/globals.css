@@ -186,7 +186,7 @@ body {
   overflow: auto;
 }
 .pageContainer h2 {
-  padding: 54px 0 20px;
+  padding: 54px 0 10px;
   text-align: center;
 }
 
@@ -299,7 +299,7 @@ textarea {
   #ownerSectionContainer h2,
   #locationSectionContainer h2,
   .pageContainer h2 {
-    padding: 20px 0 20px;
+    padding: 5px 0 5px;
     text-align: center;
   }
   #introSection {

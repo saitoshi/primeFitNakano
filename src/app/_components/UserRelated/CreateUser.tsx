@@ -15,7 +15,7 @@ export const CreateUser = () => {
   const [load, setLoad] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
   const [errMsg, setErrMsg] = useState<string>('');
-  const [verified, setVerified] = useState<boolean>(false);
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const submitUser = async (e: any) => {
     try {
@@ -32,7 +32,7 @@ export const CreateUser = () => {
         await setErrMsg('再ログインをしてください');
       }
 
-      const userServer = await fetch('/api/user', {
+      const userServer = await fetch('/api/users', {
         headers: { Authorization: `Bearer: ${token}` },
         body: JSON.stringify({ email, password }),
         method: 'POST',
@@ -56,8 +56,6 @@ export const CreateUser = () => {
     }
   };
   if (load) {
-    if (!verified) {
-    }
     return (
       <>
         <LoadingWheel />
