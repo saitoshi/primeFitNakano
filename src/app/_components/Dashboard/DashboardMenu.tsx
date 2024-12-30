@@ -1,12 +1,13 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BlogTable } from '../BlogRelated/BlogTable';
 import { ServiceTable } from '../ServiceRelated/ServiceTable';
 import { UserTable } from '../UserRelated/UserTable';
 import './style.css';
 import { useMedia } from 'react-use';
 import Link from 'next/link';
-
+import { useRouter } from 'next/navigation';
+import { getToken } from '@/app/_utils/assistFunctions/userFunctions';
 export const DashboardMenu = () => {
   interface ITab {
     title: string;
@@ -39,47 +40,120 @@ export const DashboardMenu = () => {
     },
   ];
   const [currentTab, setCurrentTab] = useState<string>(tabMenu[0]['name']);
+  const [verified, setVerified] = useState<boolean>(false);
   const isDesktop = useMedia('(min-width: 650px)', true);
   function handleClick(value: string) {
     setCurrentTab(value);
   }
-
-  return (
-    <>
-      {isDesktop ? (
-        <div className='tab'>
-          <div className='tabMenu'>
-            {tabMenu.slice(0, 3).map((menu) => {
-              return (
-                <button
-                  className='tabButton'
-                  key={menu.name}
-                  onClick={() => {
-                    handleClick(menu.name);
-                  }}>
-                  {menu.title}
+  const router = useRouter();
+  useEffect(() => {
+    const verifyToken = async () => {
+      try {
+        const token = await getToken();
+        if (!token) {
+          await router.push('/login');
+        }
+        const tokenResponse = await fetch('api/verify', {
+          headers: { Authorization: `Bearer: ${token}` },
+          method: 'GET',
+        });
+        if (tokenResponse.status !== 201) {
+          await router.push('/login');
+        }
+        await setVerified(true);
+      } catch (error) {
+        await router.push('/login');
+      }
+    };
+    if (!verified) {
+      verifyToken();
+    }
+  }, []);
+  if (verified) {
+    return (
+      <>
+        {isDesktop ? (
+          <div className='tab'>
+            <div className='tabMenu'>
+              {tabMenu.slice(0, 3).map((menu) => {
+                return (
+                  <button
+                    className='tabButton'
+                    key={menu.name}
+                    onClick={() => {
+                      handleClick(menu.name);
+                    }}>
+                    {menu.title}
+                  </button>
+                );
+              })}
+              <Link href='/create-blog' style={{ textDecoration: 'none' }}>
+                <button className='createBlogButton'>
+                  &#x270E; ブログ作成
                 </button>
-              );
-            })}
-            <Link href='/create-blog' style={{ textDecoration: 'none' }}>
-              <button className='createBlogButton'>&#x270E; ブログ作成</button>
-            </Link>
-            <Link href='/create-service' style={{ textDecoration: 'none' }}>
-              <button className='addServiceButton'>
-                &#x271A; サービス追加
+              </Link>
+              <Link href='/create-service' style={{ textDecoration: 'none' }}>
+                <button className='addServiceButton'>
+                  &#x271A; サービス追加
+                </button>
+              </Link>
+              <button
+                onClick={() => {
+                  handleClick('addUser');
+                }}
+                className='addUserButton'>
+                &#x263A; 新規ユーザー追加
               </button>
-            </Link>
-            <button
-              onClick={() => {
-                handleClick('addUser');
-              }}
-              className='addUserButton'>
-              &#x263A; 新規ユーザー追加
-            </button>
+            </div>
+            <div className='tabBody'>
+              <div
+                className='tabContent'
+                style={
+                  currentTab == 'blogList'
+                    ? { display: 'block' }
+                    : { display: 'none' }
+                }>
+                <BlogTable />
+              </div>
+              <div
+                className='tabContent'
+                style={
+                  currentTab == 'serviceList'
+                    ? { display: 'block' }
+                    : { display: 'none' }
+                }>
+                <ServiceTable />
+              </div>
+              <div
+                className='tabContent'
+                style={
+                  currentTab == 'userList'
+                    ? { display: 'block' }
+                    : { display: 'none' }
+                }>
+                <UserTable />
+              </div>
+            </div>
           </div>
-          <div className='tabBody'>
+        ) : (
+          <div id='mobileTab'>
+            <div className='mobileTabHeader'>
+              <br />
+              {tabMenu.slice(0, 3).map((menu) => {
+                return (
+                  <button
+                    className='tabButton'
+                    key={menu.name}
+                    onClick={() => {
+                      handleClick(menu.name);
+                    }}>
+                    {menu.title}
+                  </button>
+                );
+              })}
+            </div>
             <div
-              className='tabContent'
+              className='mobileTabBody'
               style={
                 currentTab == 'blogList'
                   ? { display: 'block' }
@@ -88,7 +162,7 @@ export const DashboardMenu = () => {
               <BlogTable />
             </div>
             <div
-              className='tabContent'
+              className='mobileTabBody'
               style={
                 currentTab == 'serviceList'
                   ? { display: 'block' }
@@ -97,7 +171,7 @@ export const DashboardMenu = () => {
               <ServiceTable />
             </div>
             <div
-              className='tabContent'
+              className='mobileTabBody'
               style={
                 currentTab == 'userList'
                   ? { display: 'block' }
@@ -106,53 +180,13 @@ export const DashboardMenu = () => {
               <UserTable />
             </div>
           </div>
-        </div>
-      ) : (
-        <div id='mobileTab'>
-          <div className='mobileTabHeader'>
-            <br />
-            {tabMenu.slice(0, 3).map((menu) => {
-              return (
-                <button
-                  className='tabButton'
-                  key={menu.name}
-                  onClick={() => {
-                    handleClick(menu.name);
-                  }}>
-                  {menu.title}
-                </button>
-              );
-            })}
-          </div>
-          <div
-            className='mobileTabBody'
-            style={
-              currentTab == 'blogList'
-                ? { display: 'block' }
-                : { display: 'none' }
-            }>
-            <BlogTable />
-          </div>
-          <div
-            className='mobileTabBody'
-            style={
-              currentTab == 'serviceList'
-                ? { display: 'block' }
-                : { display: 'none' }
-            }>
-            <ServiceTable />
-          </div>
-          <div
-            className='mobileTabBody'
-            style={
-              currentTab == 'userList'
-                ? { display: 'block' }
-                : { display: 'none' }
-            }>
-            <UserTable />
-          </div>
-        </div>
-      )}
-    </>
+        )}
+      </>
+    );
+  }
+  return (
+    <div className='pageSection' id='loadMessage'>
+      読み込み中...
+    </div>
   );
 };
