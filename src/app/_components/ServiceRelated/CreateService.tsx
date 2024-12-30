@@ -22,7 +22,9 @@ export const CreateService = () => {
     setCosts(costHolder);
   };
   const updateDetail = async (
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     e: any,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     holder: any,
     id: number,
     contentArea: string,
@@ -115,6 +117,7 @@ export const CreateService = () => {
         await setSuccess(true);
       }
     } catch (error) {
+      await console.error(error);
       await setError(true);
     } finally {
       await setLoad(false);

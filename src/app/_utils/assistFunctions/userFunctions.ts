@@ -52,7 +52,6 @@ export async function verifyToken() {
  * @return true or false
  */
 export async function passwordStrength(password) {
-  let strength = 0;
   if (password.length < 10) {
     return false;
   } else if (

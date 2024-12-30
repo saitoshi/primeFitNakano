@@ -1,6 +1,9 @@
 'use client';
-import { useState, useEffect } from 'react';
-import { getToken } from '@/app/_utils/assistFunctions/userFunctions';
+import { useState } from 'react';
+import {
+  getToken,
+  passwordStrength,
+} from '@/app/_utils/assistFunctions/userFunctions';
 import { LoadingWheel } from '../ConditionalRelated/LoadingWheel';
 import { useRouter } from 'next/navigation';
 import { IUser } from '@/app/_utils/type';
@@ -12,10 +15,16 @@ export const CreateUser = () => {
   const [load, setLoad] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
   const [errMsg, setErrMsg] = useState<string>('');
+  const [verified, setVerified] = useState<boolean>(false);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const submitUser = async (e: any) => {
     try {
       await e.preventDefault();
+      const pwdStrength = await passwordStrength(password);
+      if (!pwdStrength) {
+        await setError(true);
+        await setErrMsg('パスワードが弱すぎます。再入力してください。');
+      }
       const token = await getToken();
       if (!token) {
         await setLoad(false);
@@ -47,6 +56,8 @@ export const CreateUser = () => {
     }
   };
   if (load) {
+    if (!verified) {
+    }
     return (
       <>
         <LoadingWheel />
@@ -57,23 +68,23 @@ export const CreateUser = () => {
     <>
       <div id='blogForm' className='formArea'>
         <label htmlFor='title' className='formHeader'>
-          ブログタイトル
+          ユーザーのメールアドレス
         </label>
         <input
           type='title'
           id='title'
-          placeholder='ブログのタイトル'
+          placeholder='ユーザーのメールアドレス'
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           onChange={(e: any) => {
             setEmail(e.target.value);
           }}></input>
         <label htmlFor='title' className='formHeader'>
-          ブログタイトル
+          ユーザーのパスワード
         </label>
         <input
           type='password'
           id='password'
-          placeholder='ブログのタイトル'
+          placeholder='ユーザーのパスワード'
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           onChange={(e: any) => {
             setPassword(e.target.value);
@@ -85,7 +96,7 @@ export const CreateUser = () => {
             onClick={(e: any) => {
               submitUser(e);
             }}>
-            ブログ登録
+            ユーザー登録
           </button>
         </div>
         {error ? <span className='errorMsg'>{errMsg}</span> : <></>}
