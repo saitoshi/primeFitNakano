@@ -113,7 +113,7 @@ body {
 
 #introSection {
   background-color: rgba(173, 241, 255, 1);
-  padding: 64px 60px 0;
+  padding: 64px 60px 64px;
 }
 .introMessage span {
   color: aqua;
