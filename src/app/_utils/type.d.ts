@@ -39,6 +39,7 @@ export interface IBlog {
   _id: string;
   title: string;
   description: string;
+  author: string;
   thumbnail: string;
   keyword: string[];
   content: IParagraph[];

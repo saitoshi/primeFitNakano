@@ -11,6 +11,7 @@ import { useRouter } from 'next/navigation';
 export const CreateBlog = () => {
   const router = useRouter();
   const [title, setTitle] = useState<IBlog['title']>();
+  const [author, setAuthor] = useState<IBlog['author']>('');
   const [description, setDesc] = useState<IBlog['description']>();
   const [thumbnail, setThumbnail] = useState<IBlog['thumbnail']>();
   const [keyword, setKeyword] = useState<IBlog['keyword']>();
@@ -131,6 +132,17 @@ export const CreateBlog = () => {
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           onChange={(e: any) => {
             setTitle(e.target.value);
+          }}></input>
+        <label htmlFor='title' className='formHeader'>
+          ブログの著者
+        </label>
+        <input
+          type='title'
+          id='title'
+          placeholder='ブログの著者'
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          onChange={(e: any) => {
+            setAuthor(e.target.value);
           }}></input>
         <label htmlFor='title' className='formHeader'>
           ブログ用のメイン画像
