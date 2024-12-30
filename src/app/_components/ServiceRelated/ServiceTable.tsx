@@ -22,7 +22,7 @@ export const ServiceTable = () => {
     if (load) {
       fetchServices();
     }
-  }, []);
+  }, [load]);
 
   if (load) {
     return (

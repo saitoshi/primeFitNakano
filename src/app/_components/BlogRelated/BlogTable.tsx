@@ -20,7 +20,7 @@ export const BlogTable = () => {
     if (load) {
       fetchBlogs();
     }
-  }, []);
+  }, [load]);
 
   if (load) {
     return (
@@ -30,7 +30,7 @@ export const BlogTable = () => {
     );
   } else if (isError) {
     <div className='pageSection' id='errorMessage'>
-      <span className='errorMsg'>'エラーが発生いたしました'</span>
+      <span className='errorMsg'>エラーが発生いたしました</span>
     </div>;
   }
   return (

@@ -62,13 +62,14 @@ export const DashboardMenu = () => {
         }
         await setVerified(true);
       } catch (error) {
+        console.error(error);
         await router.push('/login');
       }
     };
     if (!verified) {
       verifyToken();
     }
-  }, []);
+  }, [verified]);
   if (verified) {
     return (
       <>

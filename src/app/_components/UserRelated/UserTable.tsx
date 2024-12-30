@@ -30,7 +30,8 @@ export const UserTable = () => {
         setIsError(true);
       }
     } catch (error) {
-      setIsError(true);
+      await console.error(error);
+      await setIsError(true);
     } finally {
       setIsLoad(false);
     }
@@ -40,7 +41,7 @@ export const UserTable = () => {
     if (isLoad) {
       getUsers();
     }
-  }, []);
+  }, [isLoad]);
   if (isLoad) {
     return (
       <div className='pageSection' id='loadMessage'>
