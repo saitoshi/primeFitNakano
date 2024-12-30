@@ -1,14 +1,15 @@
 .locationCard {
-  display: flex;
+  display: inline-flex;
   width: 100%;
   font-size: 1.6rem;
   align-items: stretch;
   flex-wrap: wrap;
   background-color: white;
+  padding: 5px 0;
 }
 
 .locationCard dt {
-  width: 20%;
+  flex: 20%;
   color: white;
   font-size: 1.6rem;
   font-weight: 600;
@@ -20,7 +21,7 @@
 }
 
 .locationCard dd {
-  width: 80%;
+  flex: 80%;
   padding: 8px 15px;
   font-size: 1.5rem;
   display: flex;
