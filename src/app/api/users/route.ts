@@ -57,9 +57,30 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     const userExits = await UserModel.findOne({ email: res.email });
     if (userExits) {
       return NextResponse.json(
-        { status: 400, message: 'User Exists' },
+        {
+          status: 400,
+          message: 'このメールアドレスのユーザーさんは登録済みです。',
+        },
         { status: 400 },
       );
+    }
+    let token = request.headers.get('Authorization');
+
+    if (!token) {
+      return NextResponse.json(
+        { message: '認証エラーが起きました。', status: 403 },
+        { status: 403 },
+      );
+    }
+    token = await token.split(' ')[1];
+    const secretKey = process.env.SESSION_SECRET as string;
+
+    const decoded = await jwt.verify(token, secretKey);
+    if (!decoded) {
+      return NextResponse.json({
+        message: '認証エラーが起きました。',
+        statu: 403,
+      });
     }
 
     const salt = await bcrypt.genSalt(Number(process.env.SALT));
@@ -75,7 +96,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
   } catch (error) {
     console.log(error);
     return NextResponse.json(
-      { error: 'Internal Server Error' },
+      { error: 'Internal Server Error', message: 'サーバーエラー' },
       { status: 500 },
     );
   }

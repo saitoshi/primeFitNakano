@@ -45,3 +45,22 @@ export async function verifyToken() {
     return false;
   }
 }
+
+/**
+ * @name passwordStrength
+ * @desc Check if the password is strong or not
+ * @return true or false
+ */
+export async function passwordStrength(password) {
+  let strength = 0;
+  if (password.length < 10) {
+    return false;
+  } else if (
+    password.match(/[a-z]/) &&
+    password.match(/[A-Z]/) &&
+    password.match(/[^a-zA-Z\d]/)
+  ) {
+    return true;
+  }
+  return false;
+}

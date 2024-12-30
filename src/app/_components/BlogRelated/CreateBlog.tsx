@@ -92,6 +92,7 @@ export const CreateBlog = () => {
         headers: { Authorization: `Bearer: ${token}` },
         body: JSON.stringify({
           title,
+          author,
           description,
           thumbnail,
           keyword,
