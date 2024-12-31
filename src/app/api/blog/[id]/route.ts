@@ -65,7 +65,7 @@ export async function POST(
       status: reqBody.status,
     });
     return NextResponse.json(
-      { message: 'Updated Blog', blog: blog },
+      { status: 201, message: 'Updated Blog', blog: blog },
       { status: 201 },
     );
   } catch (error) {

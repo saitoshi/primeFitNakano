@@ -98,13 +98,15 @@ export const DashboardMenu = () => {
                   &#x271A; サービス追加
                 </button>
               </Link>
-              <button
-                onClick={() => {
-                  handleClick('addUser');
-                }}
-                className='addUserButton'>
-                &#x263A; 新規ユーザー追加
-              </button>
+              <Link href='/create-user' style={{ textDecoration: 'none' }}>
+                <button
+                  onClick={() => {
+                    handleClick('addUser');
+                  }}
+                  className='addUserButton'>
+                  &#x263A; 新規ユーザー追加
+                </button>
+              </Link>
             </div>
             <div className='tabBody'>
               <div
