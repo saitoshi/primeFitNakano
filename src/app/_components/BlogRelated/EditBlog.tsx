@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { LoadingWheel } from '../ConditionalRelated/LoadingWheel';
 import { IBlog } from '@/app/_utils/type';
 import { useRouter } from 'next/navigation';
@@ -226,6 +226,7 @@ export const EditBlogForm = ({ blog }: blogInputs) => {
         <div className='formSelection'>
           <select
             name='blog_status'
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             onChange={(e: any) => {
               setStatus(e.target.value);
             }}>
