@@ -219,7 +219,7 @@ export const CreateService = () => {
             }}
             className='addRowButton'
             id='addCostButton'>
-            進める理由を追加する
+            おすすめな理由を追加する
           </button>
         </div>
         <label id='steps' className='formHeader'>
