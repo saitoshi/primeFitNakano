@@ -233,29 +233,18 @@ export const CreateBlog = () => {
           </button>
         </div>
         <label id='status' className='formHeader'>
-          サービスの公開状態 - 作成後にすぐに公開するか、しないか
+          ブログの公開状態 - 作成後にすぐに公開するか、しないか
         </label>
         <div className='formSelection'>
-          <input
-            type='radio'
-            id='status'
-            name='service_status'
-            value='draft'
+          <select
+            name='blog_status'
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             onChange={(e: any) => {
               setStatus(e.target.value);
-            }}></input>
-          <label htmlFor='html'>非公開</label>
-          <input
-            type='radio'
-            id='status'
-            name='service_status'
-            value='released'
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            onChange={(e: any) => {
-              setStatus(e.target.value);
-            }}></input>
-          <label htmlFor='html'>公開</label>
+            }}>
+            <option value='draft'>非公開</option>
+            <option value='released'>公開</option>
+          </select>
         </div>
         <div style={{ textAlign: 'center' }}>
           <button
