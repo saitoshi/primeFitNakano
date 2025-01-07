@@ -98,7 +98,7 @@ export const DashboardMenu = () => {
                   &#x271A; サービス追加
                 </button>
               </Link>
-              <Link href='/create-user' style={{ textDecoration: 'none' }}>
+              <Link href='/create-location' style={{ textDecoration: 'none' }}>
                 <button
                   onClick={() => {
                     handleClick('addLocation');

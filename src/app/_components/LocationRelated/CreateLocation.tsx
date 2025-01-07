@@ -5,24 +5,14 @@ import { ILocation } from '@/app/_utils/type';
 import { useRouter } from 'next/navigation';
 import { getToken } from '@/app/_utils/assistFunctions/userFunctions';
 
-type locationInputs = {
-  location: ILocation;
-};
-
-export const EditLocationForm = ({ location }: locationInputs) => {
+export const CreateLocationForm = () => {
   const router = useRouter();
-  const [name, setName] = useState<ILocation['name']>(location.name);
-  const [access, setAccess] = useState<ILocation['access']>(location.access);
-  const [address, setAddress] = useState<ILocation['address']>(
-    location.address,
-  );
-  const [phoneNumber, setPhone] = useState<ILocation['phoneNumber']>(
-    location.phoneNumber,
-  );
-  const [hours, setHours] = useState<ILocation['hours']>(location.hours);
-  const [description, setDesc] = useState<ILocation['description']>(
-    location.description,
-  );
+  const [name, setName] = useState<ILocation['name']>();
+  const [access, setAccess] = useState<ILocation['access']>();
+  const [address, setAddress] = useState<ILocation['address']>();
+  const [phoneNumber, setPhone] = useState<ILocation['phoneNumber']>();
+  const [hours, setHours] = useState<ILocation['hours']>();
+  const [description, setDesc] = useState<ILocation['description']>();
   const [load, setLoad] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
   const [errMsg, setErrMsg] = useState<string>('エラーが発生しました。');
@@ -37,9 +27,9 @@ export const EditLocationForm = ({ location }: locationInputs) => {
         await setError(true);
         await router.push('/login');
       }
-      const locationResponse = await fetch(`/api/location/id=${location._id}`, {
+      const locationResponse = await fetch(`/api/location/`, {
         headers: { Authorization: `Bearer: ${token}` },
-        method: 'PUT',
+        method: 'POST',
         body: JSON.stringify({
           name,
           phoneNumber,
@@ -82,7 +72,6 @@ export const EditLocationForm = ({ location }: locationInputs) => {
         <input
           type='name'
           id='name'
-          value={name}
           placeholder='店舗名の入力'
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           onChange={(e: any) => {
@@ -94,7 +83,6 @@ export const EditLocationForm = ({ location }: locationInputs) => {
         <input
           type='name'
           id='name'
-          value={address}
           placeholder='店舗住所の入力'
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           onChange={(e: any) => {
@@ -106,7 +94,6 @@ export const EditLocationForm = ({ location }: locationInputs) => {
         <input
           type='hours'
           id='hours'
-          value={hours}
           placeholder='営業の入力'
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           onChange={(e: any) => {
@@ -118,7 +105,6 @@ export const EditLocationForm = ({ location }: locationInputs) => {
         <input
           type='hours'
           id='hours'
-          value={hours}
           placeholder='電話番号の入力'
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           onChange={(e: any) => {
@@ -130,7 +116,6 @@ export const EditLocationForm = ({ location }: locationInputs) => {
         <input
           type='access'
           id='access'
-          value={access}
           placeholder='アクセスの入力'
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           onChange={(e: any) => {
@@ -142,7 +127,6 @@ export const EditLocationForm = ({ location }: locationInputs) => {
         <textarea
           name='description'
           placeholder='サービスの概要の入力'
-          value={description}
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           onChange={(e: any) => {
             setDesc(e.target.value);
@@ -154,7 +138,7 @@ export const EditLocationForm = ({ location }: locationInputs) => {
             onClick={(e: any) => {
               submitLocation(e);
             }}>
-            ブログ更新
+            店舗追加
           </button>
         </div>
         {error ? <span className='errorMsg'>{errMsg}</span> : <></>}
