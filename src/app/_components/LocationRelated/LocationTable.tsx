@@ -77,7 +77,7 @@ export const LocationTable = () => {
                 <div className='blog col-4'>{location.phoneNumber}</div>
                 <div className='blog col-5'>
                   <Link
-                    href={`/edit-blog/${location._id}`}
+                    href={`/edit-location/${location._id}`}
                     style={{ textDecoration: 'none' }}>
                     <button className='edit-button'>&#x270E;</button>
                   </Link>

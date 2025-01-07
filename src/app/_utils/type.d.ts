@@ -28,6 +28,7 @@ export interface ILocation {
   hours: string;
   phoneNumber: string;
   access: string;
+  description?: string;
 }
 
 export interface IParagraph {

@@ -18,3 +18,9 @@ export async function getMainLocation() {
     return error;
   }
 }
+/**
+ * @name getMainLocation
+ * @param _id - the location id
+ * @desc gets the specific locaiton
+ * @return specific location
+ */
