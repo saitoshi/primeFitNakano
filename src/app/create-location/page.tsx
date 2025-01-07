@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { CreateLocationForm } from '../_components/LocationRelated/CreateLocation';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.URL),
+  metadataBase: new URL('http://localhost:3000'),
   title: 'Prime Fit Gym 中野 | 新規店舗追加',
   keywords: 'パーソナルトレーニング、中野、脱毛、トレーニング、',
   openGraph: {
