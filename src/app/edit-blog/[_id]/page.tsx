@@ -36,7 +36,7 @@ export default async function Page(props: { params: tParams }) {
   }
   return (
     <>
-      <div id='editService' className='pageContainer'>
+      <div id='editBlog' className='pageContainer'>
         <h2>
           <p className='subHeader'>EDIT BLOG</p>
           <p className='mainHeader'>{blogInfo?.title}を編集する</p>
