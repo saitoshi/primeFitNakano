@@ -35,8 +35,8 @@ export const DashboardMenu = () => {
       name: 'addService',
     },
     {
-      title: '新規ユーザー追加',
-      name: 'addUser',
+      title: '店舗追加',
+      name: 'addLocation',
     },
   ];
   const [currentTab, setCurrentTab] = useState<string>(tabMenu[0]['name']);
@@ -101,10 +101,10 @@ export const DashboardMenu = () => {
               <Link href='/create-user' style={{ textDecoration: 'none' }}>
                 <button
                   onClick={() => {
-                    handleClick('addUser');
+                    handleClick('addLocation');
                   }}
                   className='addUserButton'>
-                  &#x263A; 新規ユーザー追加
+                  &#x263A; 店舗追加
                 </button>
               </Link>
             </div>
