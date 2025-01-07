@@ -1,8 +1,13 @@
 'use client';
 import './style.css';
+import { ILocation } from '@/app/_utils/type';
 import React from 'react';
-
 export const LocationCard = () => {
+  const [load, setLoad] = React.useState<Boolean>(true);
+  const [location, setLocation] = React.useState<ILocation>();
+  React.useEffect(() => {}, [location]);
+  if (load) {
+  }
   return (
     <>
       <dl className='locationCard'>
