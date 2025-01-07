@@ -2,12 +2,12 @@
 import React, { useEffect, useState } from 'react';
 import { BlogTable } from '../BlogRelated/BlogTable';
 import { ServiceTable } from '../ServiceRelated/ServiceTable';
-import { UserTable } from '../UserRelated/UserTable';
 import './style.css';
 import { useMedia } from 'react-use';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { getToken } from '@/app/_utils/assistFunctions/userFunctions';
+import { LocationTable } from '../LocationRelated/LocationTable';
 export const DashboardMenu = () => {
   interface ITab {
     title: string;
@@ -23,8 +23,8 @@ export const DashboardMenu = () => {
       name: 'serviceList',
     },
     {
-      title: 'ユーザー',
-      name: 'userList',
+      title: '店舗',
+      name: 'locationList',
     },
     {
       title: '&#x270E; ブログ作成',
@@ -130,11 +130,11 @@ export const DashboardMenu = () => {
               <div
                 className='tabContent'
                 style={
-                  currentTab == 'userList'
+                  currentTab == 'locationList'
                     ? { display: 'block' }
                     : { display: 'none' }
                 }>
-                <UserTable />
+                <LocationTable />
               </div>
             </div>
           </div>
@@ -176,11 +176,11 @@ export const DashboardMenu = () => {
             <div
               className='mobileTabBody'
               style={
-                currentTab == 'userList'
+                currentTab == 'locationList'
                   ? { display: 'block' }
                   : { display: 'none' }
               }>
-              <UserTable />
+              <LocationTable />
             </div>
           </div>
         )}

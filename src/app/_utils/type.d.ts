@@ -22,6 +22,7 @@ export interface IDetail {
   image?: string;
 }
 export interface ILocation {
+  _id: string;
   name: string;
   address: string;
   hours: string;
