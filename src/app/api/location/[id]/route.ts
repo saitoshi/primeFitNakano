@@ -18,6 +18,7 @@ export async function GET(
   try {
     const route = (await params).id;
     const locationID = route.split('id=')[1];
+    await connectDB();
     const _id = await new mongoose.Types.ObjectId(locationID);
     const location = await LocationModel.findById(_id);
     if (!location) {
@@ -29,11 +30,14 @@ export async function GET(
         { status: 404 },
       );
     }
-    return NextResponse.json({
-      status: 201,
-      location: location,
-      message: '店舗情報',
-    });
+    return NextResponse.json(
+      {
+        status: 201,
+        location: location,
+        message: '店舗情報',
+      },
+      { status: 201 },
+    );
   } catch (error) {
     await console.error(error);
     return NextResponse.json({ status: 500, message: 'サーバーサイドエラー' });
